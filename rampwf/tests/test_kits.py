@@ -22,11 +22,15 @@ def skip_no_tensorflow():
 def _generate_grid_path_kits():
     grid = []
     for path_kit in sorted(glob.glob(os.path.join(PATH, 'kits', '*'))):
-        if 'digits' in path_kit:
-            grid.append(pytest.param(os.path.abspath(path_kit),
-                                     marks=skip_no_tensorflow()))
-        else:
+        print(path_kit)
+        if 'air_passengers' in path_kit:
             grid.append(os.path.abspath(path_kit))
+        # if 'digits' in path_kit:
+        #     grid.append(pytest.param(os.path.abspath(path_kit),
+        #                              marks=skip_no_tensorflow()))
+        # else:
+        #     grid.append(os.path.abspath(path_kit))
+    print(grid)
     return grid
 
 
